@@ -3,7 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to Saikrishna Gadiparthi  #{title} 
-  button(type="button",onclick='update()', class="btn btn-secondary") Press Me
+  button(type="button",onclick='update()',class="btn btn-secondary") Hit Me
+
   div(id="target") text of Display 
 
   script.
@@ -13,4 +14,4 @@ block content
       document.getElementById("target").innerHTML = "Value now " + client_count;
     }
 
-   a(href='guava') guava 
+  
