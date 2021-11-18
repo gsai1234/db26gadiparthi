@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+    - let guavaid = toShow._id
+    - let guava_type = toShow.guava_type
+    - let guavaweight = toShow.weight
+    - let guavaCost = toShow.cost
+    div
+      div.row
+        div(class='guavaAttr mr-3') guava ID is:
+        div #{guavaid}
+      div.row
+        div(class='guavaAttr mr-3') guava Type is:
+        div #{guava_type}
+      div.row
+        div(class='guavaAttr mr-3') guava weight is:
+        div #{guavaweight}
+      div.row
+        div(class='guavaAttr mr-3') guava Cost is:
+        div #{guavaCost}

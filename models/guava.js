@@ -5,4 +5,4 @@ weight: Number,
 cost: Number 
 }) 
  
-module.exports = mongoose.model("guava",guavaSchema) 
+module.exports = mongoose.model("guava",guavaSchema)

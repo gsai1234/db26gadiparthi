@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+        - let guavaid = toShow._id
+        - let guavaname = toShow.guava_type
+        - let weight = toShow.weight
+        - let cost = toShow.cost
+      
+        div.row(class='mb-2')
+          div.mr-1 ID is
+          div #{guavaid}
+        - let actionid = "/resource/guavas/" + guavaid
+        form(id='guavaForm', action= actionid, method="PUT")
+          div.form-group
+              label.guavaAttr(for='guava_type') guavaname
+              input#guava_type(type='text', name='guava_type', value= guava_type )
+          div.form-group
+              label.guavaAttr(for='weight') weight 
+              input#weight(type='text', name='weight', value= weight )
+          div.form-group
+              label.guavaAttr(for='cost') guava cost
+              input#cost(type='number', name='cost', value= cost )
+          input(type="submit")
+
+        script.
+          document.forms['guavaForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted
+            fetch(event.target.action, {
+              method: 'PUT',
+              body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+              return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+              alert("Update succeded")
+              // TODO handle body
+            }).catch((error) => {
+              // TODO handle error
+              alert("Update failed " + error )
+            });
+          });
