@@ -1,7 +1,10 @@
-extends layout
+extends layout 
 
 block content
-  h1= title
+  h1(class="Title")= title
+   if (toShow == null)
+    h2 No instance to Update
+   else
 
     - let guavaid = toShow._id
     - let guava_type = toShow.guava_type
