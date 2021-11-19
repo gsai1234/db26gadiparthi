@@ -6,7 +6,7 @@ block content
     h2 No instance to delete
   else
         - let guavaid = toShow._id
-        - let guavaname = toShow.guava_type
+        - let guava_type = toShow.guava_type
         - let weight = toShow.weight
         - let cost = toShow.cost
       
@@ -16,11 +16,11 @@ block content
         - let actionid = "/resource/guavas/" + guavaid
         form(id='guavaForm', action= actionid, method="PUT")
           div.form-group
-              label.guavaAttr(for='guava_type') guavaname
+              label.guavaAttr(for='guava_type') guava_type
               input#guava_type(type='text', name='guava_type', value= guava_type )
           div.form-group
               label.guavaAttr(for='weight') weight 
-              input#weight(type='text', name='weight', value= weight )
+              input#weight(type='number', name='weight', value= weight )
           div.form-group
               label.guavaAttr(for='cost') guava cost
               input#cost(type='number', name='cost', value= cost )
