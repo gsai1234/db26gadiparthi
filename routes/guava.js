@@ -18,9 +18,20 @@ module.exports = router;
 
 /* GET detail guava page */ 
 router.get('/detail', guava_controlers.guava_view_one_Page); 
+
+// A little function to check if we have an authorized user and continue on
+// or
+// redirect to login.
+const secured = (req, res, next) => {
+    if (req.user){
+        return next();
+    }
+    req.session.returnTo = req.originalUrl;
+    res.redirect("/login");
+    }
 /* GET create guava page */ 
-router.get('/create', guava_controlers.guava_create_Page); 
+router.get('/create',secured, guava_controlers.guava_create_Page); 
 /* GET create update page */ 
-router.get('/update', guava_controlers.guava_update_Page); 
+router.get('/update',secured, guava_controlers.guava_update_Page); 
 /* GET create guava page */ 
-router.get('/delete', guava_controlers.guava_delete_Page);
+router.get('/delete',secured, guava_controlers.guava_delete_Page);
